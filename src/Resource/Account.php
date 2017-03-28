@@ -337,6 +337,10 @@ class Account extends MoipResource
     protected function populate(stdClass $response)
     {
         $account = clone $this;
+
+        $account->id = $this->getIfSet('id', $response);
+        $account->data->id = $account->id;
+
         $account->data->email = new stdClass();
 
         $email = $this->getIfSet('email', $response);
